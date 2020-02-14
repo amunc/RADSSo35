@@ -1,4 +1,4 @@
-# RADSSo
+# RADSSo v3.5
 RIASC Automated Decision Support Software (RADSSo) under GPLv3 adapted to python 3.5
 
 RADSSo makes use of :
