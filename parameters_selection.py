@@ -174,7 +174,7 @@ def select_optimal_parameters_current_model(model_name, diccionario_modelos_sup,
             depth = parameters[glod.get_model_max_depth_parameter_name()]
             estimators = parameters[glod.get_model_n_estimators_parameter_name()]
             acc = transform_dic_to_matrix(ac, max_pars)
-            resultados = plot_matrix(acc, max_pars[0]+1, name, ruta_directorio_modelo_supervisado, formato)
+            resultados = plot_matrix(acc, max(max_pars)+1, name, ruta_directorio_modelo_supervisado, formato)
             selected_parameters = [int(depth), int(estimators)]
             report_dict[model_name][glod.get_model_parameters_plot_name()] = "'" + resultados + "'"
         except Exception as excep:
@@ -201,7 +201,7 @@ def select_optimal_parameters_current_model(model_name, diccionario_modelos_sup,
             depth = parameters[glod.get_model_max_depth_parameter_name()]
             estimators = parameters[glod.get_model_n_estimators_parameter_name()]
             acc = transform_dic_to_matrix(ac, max_pars)
-            resultados = plot_matrix(acc, max_pars[0]+1, name, ruta_directorio_modelo_supervisado, formato)
+            resultados = plot_matrix(acc, max(max_pars)+1, name, ruta_directorio_modelo_supervisado, formato)
             selected_parameters = [int(depth), int(estimators)]
             report_dict[model_name][glod.get_model_parameters_plot_name()] = "'" + resultados + "'"
         except Exception as excep:
@@ -228,7 +228,7 @@ def select_optimal_parameters_current_model(model_name, diccionario_modelos_sup,
             len_layer1 = parameters[glod.get_model_hidden_layer_sizes()][0]
             len_layer2 = parameters[glod.get_model_hidden_layer_sizes()][1]
             acc = transform_dic_to_matrix(ac, max_pars)
-            resultados = plot_matrix(acc, max_pars[0]+1, name, ruta_directorio_modelo_supervisado, formato)
+            resultados = plot_matrix(acc, max(max_pars)+1, name, ruta_directorio_modelo_supervisado, formato)
             selected_parameters = [[int(len_layer1), int(len_layer2)], algorithm]
             report_dict[model_name][glod.get_model_parameters_plot_name()] = "'" + resultados + "'"
         except Exception as excep:
