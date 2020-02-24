@@ -539,6 +539,10 @@ try:
                     '''Creating path for generated data'''
                     path_to_directory_event_data = os.path.join(path_to_current_event_directory, glod.get_generated_data_directory_name())
                     auxf.create_directory(path_to_directory_event_data)
+                    
+                    name_validation_data_directory = config_parser.get(output_data_section, glod.get_validation_data_directory_name_name())
+                    ruta_directorio_datos_validacion = os.path.join(path_to_directory_prediction_models, name_validation_data_directory)
+                    auxf.create_directory(ruta_directorio_datos_validacion)
 
                     if not validation_mode:
                         #move observation number column to front
@@ -571,10 +575,7 @@ try:
 
                         df_validation = df_validation.sort_values(by=[observation_number])
                         df_validation.to_csv(nombre_fichero_datos_validacion, sep=input_files_delimiter, index=False, encoding=char_encoding)
-                        report_data = repg.register_target_values_distribution(auxf.count_number_of_observations_by_target(df_validation, target), ">>>>Substep 3.2 Extra :Distribution for the values of VALIDATION data for the target feature("+ target +"):\n", array_of_paths_log_files, report_data, char_encoding, 'Validation')
-                        name_validation_data_directory = config_parser.get(output_data_section, glod.get_validation_data_directory_name_name())
-                        ruta_directorio_datos_validacion = os.path.join(path_to_directory_prediction_models, name_validation_data_directory)
-                        auxf.create_directory(ruta_directorio_datos_validacion)
+                        report_data = repg.register_target_values_distribution(auxf.count_number_of_observations_by_target(df_validation, target), ">>>>Substep 3.2 Extra :Distribution for the values of VALIDATION data for the target feature("+ target +"):\n", array_of_paths_log_files, report_data, char_encoding, 'Validation')                        
                         shutil.move(nombre_fichero_datos_validacion, os.path.join(ruta_directorio_datos_validacion, target+'validation_data_'+current_event+'.'+ input_files_extension))
 
 
