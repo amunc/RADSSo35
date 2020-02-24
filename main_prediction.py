@@ -177,7 +177,7 @@ def prediction_function(BASE_PATH):
     dictionary_of_events_preloaded_models = {}
     print('''
                                           Events, target and predictions models
-             ##############################################################################################'
+             ##############################################################################################
              ##                                                                                          ##''')
     for event in dic_event_model.keys():
         dictionary_of_events_preloaded_models[event] ={}
@@ -311,19 +311,20 @@ def prediction_function(BASE_PATH):
             pred_labels = list(df_observaciones[prediction_column].values)
             true_labels = list(df_observaciones[target_to_predict].values)            
             
-            df_observaciones_temp = df_observaciones[df_observaciones[target_to_predict] == df_observaciones[prediction_column]]                                    
-            total_aciertos = len(df_observaciones_temp)
+            if( pred_labels != [] and true_labels != []):
+                df_observaciones_temp = df_observaciones[df_observaciones[target_to_predict] == df_observaciones[prediction_column]]
+                total_aciertos = len(df_observaciones_temp)
 
-            confusion_matrix=metr.get_confusion_matrix(true_labels,pred_labels,sorted(list(set(df_observaciones[target_to_predict].values))))
-            confusion_matrix_name='confusion_matrix_'+ event +'_' + target_to_predict
-            metr.save_confusion_matrix(confusion_matrix,sorted(list(set(df_observaciones[target_to_predict].values))),os.path.join(path_to_predicted_data_root,confusion_matrix_name),'png')
+                confusion_matrix=metr.get_confusion_matrix(true_labels,pred_labels,sorted(list(set(df_observaciones[target_to_predict].values))))
+                confusion_matrix_name='confusion_matrix_'+ event +'_' + target_to_predict
+                metr.save_confusion_matrix(confusion_matrix,sorted(list(set(df_observaciones[target_to_predict].values))),os.path.join(path_to_predicted_data_root,confusion_matrix_name),'png')
             
-            report_dict[event][target_to_predict][glod.get_best_model_key()] = str(dictionary_of_events_preloaded_models[event][target_to_predict][glod.get_best_model_key()])
-            report_dict[event][target_to_predict]['Correct'] = total_aciertos
-            report_dict[event][target_to_predict]['Total'] = len(df_event[df_event[target_to_predict] !=  label_non_catalogued_data])
-            report_dict[event][target_to_predict][glod.get_accuracy_parameter_name()] = float(float(total_aciertos)/float(len(df_event[df_event[target_to_predict] != label_non_catalogued_data])))
-            report_dict[event][target_to_predict]['target_to_predict_cm'] = os.path.join(path_to_predicted_data_root,confusion_matrix_name) + '.png'
-            report_dict[event][target_to_predict]['Predicted'] = len(df_event[df_event[target_to_predict] ==  label_non_catalogued_data])
+                report_dict[event][target_to_predict][glod.get_best_model_key()] = str(dictionary_of_events_preloaded_models[event][target_to_predict][glod.get_best_model_key()])
+                report_dict[event][target_to_predict]['Correct'] = total_aciertos
+                report_dict[event][target_to_predict]['Total'] = len(df_event[df_event[target_to_predict] !=  label_non_catalogued_data])
+                report_dict[event][target_to_predict][glod.get_accuracy_parameter_name()] = float(float(total_aciertos)/float(len(df_event[df_event[target_to_predict] != label_non_catalogued_data])))
+                report_dict[event][target_to_predict]['target_to_predict_cm'] = os.path.join(path_to_predicted_data_root,confusion_matrix_name) + '.png'
+                report_dict[event][target_to_predict]['Predicted'] = len(df_event[df_event[target_to_predict] ==  label_non_catalogued_data])
             
                         
         else:
@@ -372,7 +373,8 @@ def prediction_function(BASE_PATH):
              ##############################################################################################\n''')
         try:
             if (event in report_dict):
-                repg.create_report_prediction(report_dict, [event, target_to_predict], auxiliary_directory_filename, 'Prediction_models', enco)
+                if( pred_labels != [] and true_labels != []):
+                    repg.create_report_prediction(report_dict, [event, target_to_predict], auxiliary_directory_filename, 'Prediction_models', enco)
         except Exception as e:
             print (''''**********************
                    ****Critical Exception****
