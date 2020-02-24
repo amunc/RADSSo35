@@ -1217,11 +1217,7 @@ def update_prediction_models_original_features_for_event_in_prediction_dictionar
     
     return prediction_dictionary
 
-# ---------------------------------------------------------
-# Code obtained from
-# natsort.py: Natural string sorting. https://github.com/ActiveState/code/tree/master/recipes/Python/285264_Natural_string_sorting  
-# By Connelly Barnes.
-# ---------------------------------------------------------
+
 import re
 def natsorted(l): 
     convert = lambda text: int(text) if text.isdigit() else text.lower() 
