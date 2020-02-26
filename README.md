@@ -1,5 +1,5 @@
-# RADSSo v3.5
-RIASC Automated Decision Support Software (RADSSo) under GPLv3 adapted to python 3.5
+# RADSSo 2.0
+RIASC Automated Decision Support Software (RADSSo) 2.0 under GPLv3 adapted to python 3.5
 
 RADSSo makes use of :
 
@@ -13,4 +13,4 @@ Before using RADSSo for the first time, check that you are running python 3.5 ve
 
    -  pip install -r requirements.txt
    
-For complete information about how to use RADSSo please check the RADSSo user manual at https://github.com/amunc/RADSSo35/blob/master/Manuals/RADSSo35_user_manual.pdf.
+For complete information about how to use RADSSo please check the RADSSo user manual at https://github.com/amunc/RADSSo35/blob/master/Manuals/RADSSo20_user_manual.pdf.

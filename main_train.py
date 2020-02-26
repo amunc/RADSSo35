@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-''' RIASC Automated Decision Support Software (RADSSo) generates the best supervised/unsupervised model,
+''' RIASC Automated Decision Support Software (RADSSo) 2.0 generates the best supervised/unsupervised model,
     in an automated process, based on some input features and one target feature, to solve a multi-CASH problem.
 
     Copyright (C) 2018  by RIASC Universidad de Leon (Ángel Luis Muñoz Castañeda, Mario Fernández Rodríguez, Noemí De Castro García y Miguel Carriegos Vieira)
-    This file is part of RIASC Automated Decision Support Software (RADSSo)
+    This file is part of RIASC Automated Decision Support Software (RADSSo) 2.0
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-	You can find more information about the project at https://github.com/amunc/RADSSo'''
+	You can find more information about the project at https://github.com/amunc/RADSSo35'''
 
 import os
 import sys
@@ -126,7 +126,9 @@ auxf.create_directory(log_path)
 errors_file = ''
 
 input_files_delimiter = config_parser.get(input_data_section, glod.get_input_files_delimiter_name())
+input_files_delimiter = input_files_delimiter.replace('\'','')
 output_files_delimiter = config_parser.get(output_data_section, glod.get_output_files_delimiter_name())
+output_files_delimiter = output_files_delimiter.replace('\'','')
 
 main_metric = config_parser.get(input_data_section, glod.get_main_metric_key())
 feature_selection_method = config_parser.get(input_data_section, glod.get_feature_selection_key())

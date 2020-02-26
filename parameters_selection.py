@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-''' RIASC Automated Decision Support Software (RADSSo) generates the best supervised/unsupervised model,
+''' RIASC Automated Decision Support Software (RADSSo) 2.0 generates the best supervised/unsupervised model,
     in an automated process, based on some input features and one target feature, to solve a multi-CASH problem.
 
     Copyright (C) 2018  by RIASC Universidad de Leon (Ángel Luis Muñoz Castañeda, Mario Fernández Rodríguez, Noemí De Castro García y Miguel Carriegos Vieira)
-    This file is part of RIASC Automated Decision Support Software (RADSSo)
+    This file is part of RIASC Automated Decision Support Software (RADSSo) 2.0
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
